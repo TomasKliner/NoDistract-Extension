@@ -1,29 +1,9 @@
-<head>
-    <script href="script.js"></script>
-    <script>
-        chrome.runtime.getBackgroundPage(backgroundPage => backgroundPage.testMethod());
-
-const sub = document.getElementById("submit");
-const txt = document.getElementById("text");
-
-sub.addEventListener("click", function(){
-    let currentUrl;
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        currentUrl = tabs[0].url;
-    });
-
-    let pagesTo = [];
-    let pagesFrom = [];
-    pagesFrom.push(currentUrl);
-    pagesTo.push(txt.value);
-
-    localStorage.setItem("pagesTo") = pagesTo;
-    localStorage.setItem("pagesFrom") = pagesFrom;
-})
-    </script>
-</head>
-<body>
-    <h1>add redirct page</h1>
-    <input id="text" type="text">
-    <button id="submit">Add</button>
-</body>
+<html>
+    <body>
+        <h1>add redirect page</h1>
+        <input id="text" type="text">
+        <button id="submit">Add</button>
+        <button id="check">check</button>
+        <script src="index.js"></script>
+    </body>
+</html>

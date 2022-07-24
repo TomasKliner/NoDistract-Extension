@@ -1,24 +1,22 @@
 {
-    "name": "No Distract",
-    "description": "Extension for helping with my Social sites addiction (mainly Youtube). And also help with ADHD",
-    "version": "1.0",
-    "manifest_version": 3,
-    
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": "icon64.png"
-    },
-
-    "icons": { 
-        "16": "icon16.png",
-        "48": "icon64.png",
-       "128": "icon128.png" },
-    "background": {
-        "service_worker": "background.js"
-      },
-      "permissions": [
-        "storage",
-        "tabs"
-                    ]
-
-    }
+  "name": "No Distract",
+  "description": "Extension for helping with my Social sites addiction (mainly Youtube). And also help with ADHD",
+  "version": "0.1",
+  "manifest_version": 3,
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon64.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon64.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ]
+}
