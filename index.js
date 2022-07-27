@@ -1,12 +1,14 @@
-const sub = document.getElementById("submit");
+const submit = document.getElementById("submit");
 const txt = document.getElementById("text");
+const check = document.getElementById('check');
 
-sub.addEventListener("click", function () {
+
+submit.addEventListener("click", function () {
     let pagesTo = [];
     let pagesFrom = [];
-    if (localStorage.getItem('pagesTo') != null) {
-        let pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
-        let pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
+    if (localStorage.getItem('pagesTo')) {
+        pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
+        pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
     }
 
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
@@ -17,24 +19,22 @@ sub.addEventListener("click", function () {
         localStorage.setItem("pagesTo", JSON.stringify(pagesTo));
         localStorage.setItem("pagesFrom", JSON.stringify(pagesFrom));
 
-
-
     });
 
 
 
-    document.getElementById('check').addEventListener("click", function () {
+    check.addEventListener("click", function () {
         let pagesTo = [];
         let pagesFrom = [];
         if (localStorage.getItem('pagesTo') != null) {
-            let pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
-            let pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
+            pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
+            pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
         }
             chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
                 let url = tabs[0].url;
                 for (let i = 0; i < pagesFrom.length; ++i) {
                     if(pagesFrom[i] === url){
-                        console.log('test');
+                        alert('test');
                         chrome.tabs.update({url: pagesTo[i]});
                     }
                 }
