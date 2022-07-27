@@ -2,6 +2,7 @@
   "name": "No Distract",
   "description": "Extension for helping with my Social sites addiction (mainly Youtube). And also help with ADHD",
   "version": "0.1",
+  "persistent":true,
   "manifest_version": 3,
   "icons": {
     "16": "icon16.png",
@@ -12,11 +13,20 @@
     "default_popup": "index.html",
     "default_icon": "icon64.png"
   },
+
   "background": {
     "service_worker": "background.js"
   },
+
   "permissions": [
     "storage",
     "tabs"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["url_check.js"]
+    }
   ]
 }

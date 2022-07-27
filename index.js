@@ -20,31 +20,28 @@ submit.addEventListener("click", function () {
         localStorage.setItem("pagesFrom", JSON.stringify(pagesFrom));
 
     });
+});
 
 
-
-    check.addEventListener("click", function () {
-        let pagesTo = [];
-        let pagesFrom = [];
-        if (localStorage.getItem('pagesTo') != null) {
-            pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
-            pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
+check.addEventListener("click", function () {
+    let pagesTo = [];
+    let pagesFrom = [];
+    if (localStorage.getItem('pagesTo')) {
+        pagesTo = JSON.parse(localStorage.getItem('pagesTo'));
+        pagesFrom = JSON.parse(localStorage.getItem('pagesFrom'));
+    }
+    chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
+        let url = tabs[0].url;
+        for (let i = 0; i < pagesFrom.length; ++i) {
+         //   alert(pagesFrom[i] + "  " + url);
+            if (pagesFrom[i] === url) {
+                chrome.tabs.update({url: pagesTo[i]});
+                break;
+            }
         }
-            chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
-                let url = tabs[0].url;
-                for (let i = 0; i < pagesFrom.length; ++i) {
-                    if(pagesFrom[i] === url){
-                        alert('test');
-                        chrome.tabs.update({url: pagesTo[i]});
-                    }
-                }
-        })
     })
-
-
-
-
 })
+
 
 
 
