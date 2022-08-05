@@ -1,1 +1,2 @@
-chrome.runtime.sendMessage({redirect: "null"});
+chrome.runtime.sendMessage({data: "loadedPage"});
+console.log('Content script');

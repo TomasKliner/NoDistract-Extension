@@ -20,7 +20,13 @@
 
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
   ],
 
   "content_scripts": [
