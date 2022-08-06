@@ -1,11 +1,11 @@
 const txt = document.getElementById("text");
 const submit = document.getElementById("submit");
-//const submit2 = document.getElementById("submit2");
+const submit2 = document.getElementById("submit2");
 const check = document.getElementById('check');
-const del = document.getElementById('del');
+const delAll = document.getElementById('delAll');
 const keyList = document.getElementById('keyList');
-//const keyList2 = document.getElementById('keyList2');
-
+const keyList2 = document.getElementById('keyList2');
+const delByName = document.getElementById('delByName');
 load();
 
 
@@ -52,11 +52,33 @@ submit2.addEventListener("click", function () {
     else alert("The key has to be atleast 3 characters long !")
 });
 
-del.addEventListener("click", function () {
+delAll.addEventListener("click", function () {
     chrome.storage.local.clear();
     load();
 });
 
+delByName.addEventListener("click", function () {
+    chrome.storage.local.get('urls', function (result) {
+        let arr = result['urls'] ? result['urls'] : [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == txt.value) {
+                arr.splice(i, 1);
+            }
+        }
+        chrome.storage.local.set({ 'urls': arr });
+        load();
+    });
+    chrome.storage.local.get('keywords', function (result) {
+        let arr = result['keywords'] ? result['keywords'] : [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == txt.value) {
+                arr.splice(i, 1);
+            }
+        }
+        chrome.storage.local.set({ 'keywords': arr });
+        load();
+    });
+});
 
 
 
