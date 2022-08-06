@@ -1,4 +1,4 @@
-const txt = document.getElementById("text");
+
 const submit = document.getElementById("submit");
 //const submit2 = document.getElementById("submit2");
 const check = document.getElementById('check');
@@ -16,14 +16,14 @@ function load() {
         for (let i = 0; i < arr.length; i++) {
             keyList.innerHTML += `<li> ${arr[i]} </li>`; //<button class="closebtn" data-id='${i}'>x</button>
         }
-    });
+    });/*
     chrome.storage.local.get('urls', function (result) {
         let arr = result['urls'] ? result['urls'] : [];
         keyList2.innerHTML = '';
         for (let i = 0; i < arr.length; i++) {
             keyList2.innerHTML += `<li> ${arr[i]} </li>`; //<button class="closebtn" data-id='${i}'>x</button>
         }
-    });
+    });*/
 }
 
 submit.addEventListener("click", function () {
@@ -38,7 +38,7 @@ submit.addEventListener("click", function () {
     }
     else alert("The key has to be atleast 3 characters long !")
 });
-
+/*
 submit2.addEventListener("click", function () {
 
     if (txt.value.length > 2) {
@@ -51,18 +51,11 @@ submit2.addEventListener("click", function () {
     }
     else alert("The key has to be atleast 3 characters long !")
 });
-
+*/
 del.addEventListener("click", function () {
     chrome.storage.local.clear();
     load();
 });
-
-
-
-
-
-
-
 
 /*let updateBtns = document.getElementsByClassName('closebtn');
 for (let i = 0; i < updateBtns.length; i++) {
