@@ -1,16 +1,15 @@
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
-    chrome.storage.local.get(['keywords'], function (result) {
-        let keywords = [];
-        keywords = result;
-        console.log(keywords);
+    chrome.storage.local.get('keywords', function (result) {
+        let arr = result['keywords'] ? result['keywords'] : [];
+        console.log(arr);
 
         let surl = changeInfo['url'];
-        console.log(keywords);
+        console.log(arr);
 
-        for (let i = 0; i < keywords.length; ++i) {
-            if (surl.includes(keywords[i])) {
+        for (let i = 0; i < arr.length; ++i) {
+            if (surl.includes(arr[i])) {
                 chrome.tabs.update(tabId, { url: "https://www.google.com" });
             }
         }
