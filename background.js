@@ -17,3 +17,4 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 });
 
+let tempArr=['youtube.com/shorts', 'youtube.com/feed/explore']
