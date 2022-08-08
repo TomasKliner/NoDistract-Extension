@@ -1,5 +1,5 @@
-Tracking Object structure
-
+# Tracking Object structure
+---
 Object []
 ---------------------
 -keyword
@@ -7,7 +7,7 @@ Object []
 -time[]
 --from
 --to
-
+let name = [{keyword:"", url:"", time:[{from: null, to: null}]}];
 --------------------
 
 Settings
@@ -18,3 +18,5 @@ Settings
 --to
 -darkmode
 -
+
+let settings = {inverted:false, darkmode:false, time:[{from: null, to: null}]}
