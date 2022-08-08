@@ -4,7 +4,6 @@ const submit2 = document.getElementById("submit2");
 const check = document.getElementById('check');
 const delAll = document.getElementById('delAll');
 const keyList = document.getElementById('keyList');
-const keyList2 = document.getElementById('keyList2');
 const delByName = document.getElementById('delByName');
 load();
 
@@ -19,9 +18,9 @@ function load() {
     });
     chrome.storage.local.get('urls', function (result) {
         let arr = result['urls'] ? result['urls'] : [];
-        keyList2.innerHTML = '';
+        timeList.innerHTML = '';
         for (let i = 0; i < arr.length; i++) {
-            keyList2.innerHTML += `<li> ${arr[i]} </li>`; //<button class="closebtn" data-id='${i}'>x</button>
+            timeList.innerHTML += `<li> ${arr[i]} </li>`; //<button class="closebtn" data-id='${i}'>x</button>
         }
     });
 }
