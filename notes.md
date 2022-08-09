@@ -20,3 +20,8 @@ Settings
 -
 
 let settings = {inverted:false, darkmode:false, time:[{from: null, to: null}]}
+
+
+  <script>let activejobs= jobs.filter(job=>job.isActive)
+            activejobs= jobs.filter(function(job) {return job.isActive})
+            </script>
