@@ -25,3 +25,5 @@ let settings = {inverted:false, darkmode:false, time:[{from: null, to: null}]}
   <script>let activejobs= jobs.filter(job=>job.isActive)
             activejobs= jobs.filter(function(job) {return job.isActive})
             </script>
+## startup script -> lepší využít npm script
+//npx tailwindcss -i ./styles/input.css -o ./st/output.css --watch

@@ -6,4 +6,5 @@ module.exports = {
   },
   plugins: [],
 }
-// npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch
+// startup script -> lepší využít npm script
+//npx tailwindcss -i ./styles/input.css -o ./st/output.css --watch
