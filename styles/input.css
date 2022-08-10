@@ -19,3 +19,11 @@ h2{
 h3{
     @apply h text-lg;
 }
+
+nav li{
+    @apply m-2 text-xl font-bold
+}
+
+body{
+    @apply font-sans
+}
