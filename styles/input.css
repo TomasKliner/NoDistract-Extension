@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button{
+    @apply p-1 m-1 text-black bg-white rounded-sm font-medium;
+}
+
+.h{
+    @apply font-bold;
+}
+
+h1{
+    @apply h text-2xl;
+}
+h2{
+    @apply h text-xl;
+}
+h3{
+    @apply h text-lg;
+}
