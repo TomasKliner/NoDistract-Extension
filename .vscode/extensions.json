@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "SimonSiefke.prettier-vscode"
+        "simonsiefke.prettier-vscode",
+        "pmneo.tsimporter"
     ]
 }
