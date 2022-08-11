@@ -19,8 +19,8 @@ function getData(id) {
 
 function loadPermanent() {
     chrome.storage.local.get('permanent', function (result) {
-        loadData("permanent_key", permanent.keys);
-        loadData("permanent_urls", permanent.keys);
+        loadData("permanent_key", result.keys);
+        loadData("permanent_urls", result.urls);
     });
 }
 function savePermanent() {
@@ -30,14 +30,20 @@ function savePermanent() {
 }
 function loadGlobal() {
     chrome.storage.local.get('global', function (result) {
-        loadData("global_key", permanent.keys);
-        loadData("global_urls", permanent.keys);
+        loadData("global_key", result.keys);
+        loadData("global_urls", result.urls);
+        document.getElementById("timeFrom").value = result.time.from;
+        document.getElementById("timeTo").value = result.time.to;
     });
 }
 function saveGlobal() {
     let k = getData("global_key");
     let u = getData("global_urls");
-    chrome.storage.local.set({ 'permanent': { keys: k, urls: u } });
+
+    let timeFrom = document.getElementById("timeFrom").value;
+    let timeTo = document.getElementById("timeTo").value;
+
+    chrome.storage.local.set({ 'permanent': { keys: k, urls: u, time: { to: timeTo, from: timeFrom } } });
 }
 
 let permanent = {
