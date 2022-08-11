@@ -15,14 +15,13 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                 break;
             }
         }
-        if (isInInterval || timeArr === []) {
+        if ( 1 ) {
             chrome.storage.local.get('keywords', function (result) {
                 let arr = result['keywords'] ? result['keywords'] : [];
                 let surl = changeInfo['url'];
 
                 for (let i = 0; i < arr.length; ++i) {
                     if (surl.includes(arr[i])) {
-                        console.log(surl);
                         chrome.tabs.update(tabId, { url: "https://www.google.com" });
                     }
                 }

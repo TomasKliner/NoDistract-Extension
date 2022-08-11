@@ -43,7 +43,10 @@ function saveGlobal() {
     let timeFrom = document.getElementById("timeFrom").value;
     let timeTo = document.getElementById("timeTo").value;
 
-    chrome.storage.local.set({ 'permanent': { keys: k, urls: u, time: { to: timeTo, from: timeFrom } } });
+    chrome.storage.local.set({
+        'permanent':
+            { keys: k, urls: u, time: { to: timeTo, from: timeFrom } }
+    });
 }
 
 let permanent = {
