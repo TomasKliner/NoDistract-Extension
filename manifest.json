@@ -5,9 +5,9 @@
   "persistent": true,
   "manifest_version": 3,
   "icons": {
-    "16": "icon16.png",
-    "48": "icon64.png",
-    "128": "icon128.png"
+    "16": "src/icon16.png",
+    "48": "src/icon64.png",
+    "128": "src/icon128.png"
   },
   "action": {
     "default_popup": "index.html",
