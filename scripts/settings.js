@@ -1,53 +1,96 @@
 
+loadAll();
 function loadAll() { //load all lists of textareas
     loadPermanent();
     loadGlobal();
 }
 
-function loadData(id, data) {
-    x.innerText = 0;
+function loadData(id, data) { 
     let x = document.getElementById(id);
+    x.value = "";
     for (let i = 0; i < data.length; ++i) {
-        x.innerText += data[i];
+        x.value += data[i] + "\n";
     }
 }
 
 function getData(id) {
-    let x = document.getElementById(id);
+    let x = document.getElementById(id).value;
     return x.split(/\r?\n/).filter(element => element);
 }
+//////////////////////////////////////////////////////
 
 function loadPermanent() {
     chrome.storage.local.get('permanent', function (result) {
-        loadData("permanent_key", result.keys);
-        loadData("permanent_urls", result.urls);
+        loadData("permanent_key", result['permanent']['keys']);
+        loadData("permanent_url", result['permanent']['urls']);
     });
 }
-function savePermanent() {
-    let k = getData("permanent_key");
-    let u = getData("permanent_urls");
-    chrome.storage.local.set({ 'permanent': { keys: k, urls: u } });
-}
+document.getElementById('save_permanent').addEventListener("click",
+    function savePermanent() {
+        let k = getData("permanent_key");
+        let u = getData("permanent_url");
+        chrome.storage.local.set({ 'permanent': { 'keys': k, 'urls': u } });
+    });
+////////////////////////////////////////////////////////////////
+
 function loadGlobal() {
     chrome.storage.local.get('global', function (result) {
-        loadData("global_key", result.keys);
-        loadData("global_urls", result.urls);
-        document.getElementById("timeFrom").value = result.time.from;
-        document.getElementById("timeTo").value = result.time.to;
+        loadData("global_key", result['global']['keys']);
+        loadData("global_url", result['global']['urls']);
+        document.getElementById("timeFrom").value = result['global']['timeFrom'];
+        document.getElementById("timeTo").value = result['global']['timeTo'];
     });
 }
-function saveGlobal() {
+
+document.getElementById('save_global').addEventListener("click", function saveGlobal() {
     let k = getData("global_key");
-    let u = getData("global_urls");
+    let u = getData("global_url");
 
     let timeFrom = document.getElementById("timeFrom").value;
     let timeTo = document.getElementById("timeTo").value;
 
     chrome.storage.local.set({
-        'permanent':
-            { keys: k, urls: u, time: { to: timeTo, from: timeFrom } }
+        'global':
+            { 'keys': k, 'urls': u, 'timeTo': timeTo, 'timeFrom': timeFrom }
     });
-}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let permanent = {
     keys: [],

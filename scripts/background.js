@@ -1,4 +1,37 @@
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    old();
+    chrome.storage.local.get('permanent', function (result) {
+        let arr = result['permanent']['keys'] ? result['permanent']['keys'] : [];
+        let surl = changeInfo['url'];
+
+        for (let i = 0; i < arr.length; ++i) {
+            if (surl.includes(arr[i])) {
+                chrome.tabs.update(tabId, { url: "https://www.google.com" });
+            }
+        }
+    });
+
+    chrome.storage.local.get('permanent', function (result) {
+        let arr = result['permanent']['urls'] ? result['permanent']['urls'] : [];
+        let surl = changeInfo['url'];
+
+        for (let i = 0; i < arr.length; ++i) {
+            if (surl == arr[i]) {
+                console.log(surl);
+                chrome.tabs.update(tabId, { url: "https://www.google.com" });
+            }
+        }
+    });
+
+});
+
+
+
+
+
+
+
+function old() {
     chrome.storage.local.get('time', function (result) {
 
         let timeArr = result['time'] ? result['time'] : [];
@@ -15,7 +48,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                 break;
             }
         }
-        if ( 1 ) {
+        if (1) {
             chrome.storage.local.get('keywords', function (result) {
                 let arr = result['keywords'] ? result['keywords'] : [];
                 let surl = changeInfo['url'];
@@ -41,8 +74,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             });
         }
     });
-});
-
+}
 function getTime() {
     const date = new Date();
     return date.getHours() + ":" + date.getMinutes();
