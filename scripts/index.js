@@ -52,7 +52,8 @@ submit2.addEventListener("click", function () {
 });
 
 delAll.addEventListener("click", function () {
-    chrome.storage.local.clear();
+    chrome.storage.local.set({ 'urls': [] });
+    chrome.storage.local.set({ 'keywords': [] });
     load();
 });
 
