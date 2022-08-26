@@ -2695,6 +2695,22 @@ body[dir="rtl"] .checkbox:checked,
   width: 66.666667%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-48 {
+  width: 12rem;
+}
+
 .resize-y {
   resize: vertical;
 }
@@ -2711,8 +2727,20 @@ body[dir="rtl"] .checkbox:checked,
   justify-content: flex-start;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .overflow-y-scroll {

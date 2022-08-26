@@ -43,19 +43,14 @@
     </nav>
 
     <div class="text-black w-full text-center overflow-y-scroll min-h-screen">
-        <h2 class="text-2xl">Permanent Block</h2>
-        <div class="flex flex-col">
-            <label>
-                <h3>Keywords:</h3>
-                <textarea id="permanent_key" class="textarea textarea-bordered  w-2/3 resize-y h-1/2"
-                    placeholder="keywords separated by New Line"></textarea>
-            </label>
-            <label>
-                <h3>Urls</h3>
-                <textarea id="permanent_url" class="textarea textarea-bordered  w-2/3 resize-y h-4/6"
-                    placeholder="urls separated by New Line"></textarea>
-            </label>
-            <button id="save_permanent" class="btn w-64 m-auto mt-4">save</button>
+        <h2 class="text-2xl">Time limits</h2>
+        <div id="arr" class="flex flex-col">
+            <div class="flex justify-center">
+            <h2 class="w-1/2">Website</h2><h2 class="w-48">Time in minutes</h2>
+            </div>
+            <div class="flex justify-center">
+                <input type="text" class="input input-bordered w-1/2"><input class="input input-bordered w-48" type="number">
+            </div>
         </div>
     </div>
 
