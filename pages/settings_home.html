@@ -12,7 +12,10 @@
 <body class="flex justify-between h-screen w-screen">
     <nav class="flex flex-col justify-between h-full bg-cyan-400 p-4">
         <ul class="flex flex-col justify-start">
-            <a href="permament.html">
+            <a href="settings_home.html">
+                <li>Default Settings</li>
+            </a>
+            <a href="permanent.html">
                 <li>Permanent</li>
             </a>
             <a href="global.html">
@@ -21,7 +24,7 @@
             <a href="custom.html">
                 <li>Custom Time</li>
             </a>
-            <a href="limit.html">
+            <a href="limits.html">
                 <li>Time limits</li>
             </a>
         </ul>
@@ -39,21 +42,18 @@
         </ul>
     </nav>
 
-    <div class="text-black w-full text-center">
-        <h2>Permanent Block:</h2>
-        <div class="flex flex-col">
-            <label>
-                <h3>Keywords:</h3>
-                <textarea id="permanent_key" class="textarea textarea-bordered  w-2/3"
-                    placeholder="keywords separated by New Line"></textarea>
-            </label>
-            <label>
-                <h3>Urls</h3>
-                <textarea id="permanent_url" class="textarea textarea-bordered  w-2/3"
-                    placeholder="urls separated by New Line "></textarea>
-            </label>
-            <button id="save_permanent" class="btn w-64 m-auto">save</button>
-        </div>
+    <div class="text-black w-full text-center overflow-y-scroll min-h-screen">
+        <h1 class="text-2xl">Main settings</h1>
+        <label>
+            <h3>Redirect to custom url ?</h3><input type="checkbox" id="lastPage" class="checkbox checkbox-accent">
+               </input>
+        </label>
+        <label>
+            <h3>page you get reddirected to:</h3><input type="text" id="redirect" class="input input-bordered"
+                placeholder="google.com"></input>
+        </label>
+        <button id="save" class="btn btn-accent">SAVE</button>
+        
     </div>
 
 </body>
