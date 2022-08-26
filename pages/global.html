@@ -43,8 +43,13 @@
     </nav>
 
     <div class="text-black w-full text-center overflow-y-scroll min-h-screen">
-        <h2 class="text-2xl">Permanent Block</h2>
+        <h2 class="text-2xl">Scheduled Time for pages:</h2>
         <div class="flex flex-col">
+            <label>
+                <h3>Blocking time:</h3>
+                <input type="time" id="timeFrom" class="border rounded">
+                <input type="time" id="timeTo" class="border rounded">
+            </label>
             <label>
                 <h3>Keywords:</h3>
                 <textarea id="permanent_key" class="textarea textarea-bordered  w-2/3 resize-y h-1/2"
