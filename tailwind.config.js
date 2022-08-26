@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 // startup script -> lepší využít npm script
-//npx tailwindcss -i ./styles/input.css -o ./st/output.css --watch
+//npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch
