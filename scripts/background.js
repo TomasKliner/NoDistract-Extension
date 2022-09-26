@@ -114,4 +114,21 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         return date.getHours() + ":" + date.getMinutes();
     }
 });
-let tempArr = ['youtube.com/shorts', 'youtube.com/feed/explore'];
+//let tempArr = ['youtube.com/shorts', 'youtube.com/feed/explore'];
+
+
+///////////////////////////////////////////////////////////////////////// Zoutube name
+//documentation : https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
+chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
+    if(request.loaded){
+        console.log("----------succesfully loaded:")
+        console.log(request.name);
+        console.log(request.message); //confirmed working
+        
+        //console.log(sender); //sender info(url of current page that executed content script)
+        
+
+
+    }
+
+});

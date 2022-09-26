@@ -20,7 +20,7 @@
 
   "permissions": ["storage", "tabs", "activeTab"],
 
-  "host_permissions": ["http://*/*", "https://*/*"],
+  "host_permissions": ["http://*/*", "https://*/*", "<all_urls>" ],
 
   "options_page": "pages/settings.html",
 
@@ -28,6 +28,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["scripts/url_check.js"]
+
     }
   ]
 }
