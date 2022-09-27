@@ -121,13 +121,14 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 //documentation : https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
 chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
     if(request.loaded){
-        console.log("----------succesfully loaded:")
-        console.log(request.name);
-        console.log(request.message); //confirmed working
+        //console.log(request.name);
+       if(request.name.includes('free')){
+            console.log("YESSSSSS working background script!");
+       }
+
+
         
         //console.log(sender); //sender info(url of current page that executed content script)
-        
-
 
     }
 
