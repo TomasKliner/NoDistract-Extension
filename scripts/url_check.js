@@ -3,7 +3,7 @@ function test() {
     let url = location.href;
     let el = !url.includes('/feed/subscription') ? document.querySelectorAll('#channel-name') : null;
     if (el != null && el.length === 0) {
-        setTimeout(test, 100);
+        setTimeout(test, 50);
         //console.log("not yet!")
     }
     else if (el == null) {
