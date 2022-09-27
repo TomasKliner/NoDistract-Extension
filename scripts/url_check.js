@@ -1,17 +1,20 @@
 test();
-function test(){
-    let el = document.querySelectorAll('#channel-name');
-    if(el.length===0){
+function test() {
+    let url = location.href;
+    let el = !url.includes('/feed/subscription') ? document.querySelectorAll('#channel-name') : null;
+    if (el != null && el.length === 0) {
         setTimeout(test, 100);
-         //console.log("not yet!")
+        //console.log("not yet!")
+    }
+    else if (el == null) {
+        console.log('Url icludes restricted phrase!');
     }
     else Work(el);
-   
+
 }
 function Work(el) {
-    const name = el[0].innerText; //someText.replace(/(\r\n|\n|\r)/gm, "");
+    const name = el[0].innerText;
     // contains 2x + new lines
-
     console.log(name); // yep +- /n
 
     chrome.runtime.sendMessage({ loaded: true, name: name, message: 'Hello, im Content script' });
