@@ -1,20 +1,27 @@
-const myTimeout = setTimeout(test,10000); //find better solution after load of everything
-
+test();
 function test(){
+    if(document.querySelectorAll('#channel-name').length===0){
+        setTimeout(test, 200);
+         //console.log("not yet!")
+    }
+    else Work();
+   
+}
+function Work() {
+    const el = document.querySelectorAll('#channel-name') || null;
 
-const el = document.querySelectorAll('#channel-name')
-    || "not found";
+    const name = el[0].innerText; //someText.replace(/(\r\n|\n|\r)/gm, "");
+    // contains 2x + new lines
 
-const name = el[0].innerText; //someText.replace(/(\r\n|\n|\r)/gm, "");
-// contains 2x + new lines
+    console.log(name); // yep +- /n
 
-//console.log(el);
-//console.log(el.length)
-console.log(name); // yep +- /n
-
-chrome.runtime.sendMessage({ loaded: true, name: name, message: 'Hello, im Content script' });
+    chrome.runtime.sendMessage({ loaded: true, name: name, message: 'Hello, im Content script' });
 }
 
+
+
+
+// Example test
 /*
 console.log("test");
 let docc = document.getElementsByTagName('body')
