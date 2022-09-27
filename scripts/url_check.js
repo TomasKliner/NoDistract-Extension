@@ -1,15 +1,14 @@
 test();
 function test(){
-    if(document.querySelectorAll('#channel-name').length===0){
-        setTimeout(test, 200);
+    let el = document.querySelectorAll('#channel-name');
+    if(el.length===0){
+        setTimeout(test, 100);
          //console.log("not yet!")
     }
-    else Work();
+    else Work(el);
    
 }
-function Work() {
-    const el = document.querySelectorAll('#channel-name') || null;
-
+function Work(el) {
     const name = el[0].innerText; //someText.replace(/(\r\n|\n|\r)/gm, "");
     // contains 2x + new lines
 
