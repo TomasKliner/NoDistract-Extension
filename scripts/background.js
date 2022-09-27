@@ -119,17 +119,22 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 ///////////////////////////////////////////////////////////////////////// Zoutube name
 //documentation : https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
-chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
+chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{ //solve tabs update
     if(request.loaded){
         //console.log(request.name);
-       if(request.name.includes('free')){
-            console.log("YESSSSSS working background script!");
+       if(request.name.includes('free')){ //feed/sub exclude from this, or include only /watch urls
+            console.log("Channel name and record does MATCH!");
+            chrome.tabs
+            .query({ currentWindow: true, active: true })
+            .then(x => chrome.tabs.update(x[0].id, { url: "https://www.google.com" }));
        }
-
+       else console.log("Channel name and record does DOESNT match !!");
 
         
         //console.log(sender); //sender info(url of current page that executed content script)
 
     }
+
+
 
 });
