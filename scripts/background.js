@@ -139,6 +139,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solv
 
 });
 
+//ulozit zacatek a konec do chrome.storage dle data a pote je zpracovavat,. aby sel ukazat cas na index page
+///mozna udelat dalsi s onActive podle ktereho budu pocitat cas vsem ostatnim krome youtube, netflix atd.. jelikoz ty muzou hrat i kdyz nejsou activeTab
+
 let openTabs = [];
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
