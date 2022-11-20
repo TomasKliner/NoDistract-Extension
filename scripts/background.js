@@ -141,17 +141,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solv
 
 let openTabs = [];
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    openTabs[tabId] = { url: tab.url, openedOn: new Date()};
- //   console.log(openTabs[tabId]);
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => 
+
+    if (openTabs[tabId] === undefined) {
+        openTabs[tabId] = { url: tab.url, openedOn: new Date() };
+    }
+
 });
 chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
     console.log("closed tab url: " + openTabs[tabId].url + " " + openTabs[tabId].openedOn);
     let timeElapsed = new Date() - openTabs[tabId].openedOn;
-    timeElapsed /=1000;
+    timeElapsed /= 1000;
 
     console.log(timeElapsed + " s");
-    
+
 });
 
 //favIconUrl
