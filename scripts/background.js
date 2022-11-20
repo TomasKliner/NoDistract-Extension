@@ -141,7 +141,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solv
 
 let openTabs = [];
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
     if (openTabs[tabId] === undefined) {
         openTabs[tabId] = { url: tab.url, openedOn: new Date() };

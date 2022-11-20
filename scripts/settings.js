@@ -5,7 +5,7 @@ function loadAll() { //load all lists of textareas
     loadGlobal();
 }
 
-function loadData(id, data) { 
+function loadData(id, data) {
     let x = document.getElementById(id);
     x.value = "";
     for (let i = 0; i < data.length; ++i) {

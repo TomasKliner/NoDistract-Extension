@@ -1,34 +1,23 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="../styles/output.css">
 </head>
-<body class="bg-cyan-300 p-4 border-2 border-teal-900">
-    <h1 class="">No Distract</h1>
-    <label>Write your keyword or url:
-        <input id="text" type="text"></label>
-    <button id="submit">Add Key</button>
-    <button id="submit2">Add URL</button>
-    <button id="delAll">Del All</button>
-    <button id="delByName">Del by name</button>
-    <hr>
 
-    <label>Input Time: <br>
-        <input type="time" id="timeFrom">
-        <input type="time" id="timeTo"></label>
-    <button id="timeAdd">Add Time</button>
-    <button id="timeClear">Clear Time</button>
-    <hr>
-    <h3>Keywords:</h3>
-    <ul id="keyList"></ul>
-    <h3>URLs:</h3>
-    <ul id="keyList2"></ul>
-    <h3>Time Blocks:</h3>
-    <ul id="timeList"></ul>
+<body class="bg-neutral-800 w-80 h-96 text-white">
+    <div>
+        <h2 class="text-center">Time Spent (Today)</h2>
+        <p class="text-center">time</p>
+        <h2 class="text-center">Time left</h2>
+        <p class="text-center">time</p>
+    </div>
+    <a href="./settings.html">
+        <div class="w-16 h-16 rounded-full bg-white text-black flex items-center text-center font-bold shadow hover:bg-neutral-200">Settings</div>
+    </a>
 
-    <hr>
-    <a href="./settings.hmtl"></a>
 </body>
 
 </html>
+
 <script src="../scripts/index.js"></script>
 <script src="../scripts/time.js"></script>
