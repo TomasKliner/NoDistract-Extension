@@ -119,18 +119,18 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 ///////////////////////////////////////////////////////////////////////// Zoutube name
 //documentation : https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage
-chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{ //solve tabs update
-    if(request.loaded){
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solve tabs update
+    if (request.loaded) {
         //console.log(request.name);
-       if(request.name.includes('free')){ //feed/sub exclude from this, or include only /watch urls
+        if (request.name.includes('free')) { //feed/sub exclude from this, or include only /watch urls
             console.log("Channel name and record does MATCH!");
             chrome.tabs
-            .query({ currentWindow: true, active: true })
-            .then(x => chrome.tabs.update(x[0].id, { url: "https://www.google.com" }));
-       }
-       else console.log("Channel name and record does DOESNT match !!");
+                .query({ currentWindow: true, active: true })
+                .then(x => chrome.tabs.update(x[0].id, { url: "https://www.google.com" }));
+        }
+        else console.log("Channel name and record does DOESNT match !!");
 
-        
+
         //console.log(sender); //sender info(url of current page that executed content script)
 
     }
@@ -138,3 +138,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{ //solve 
 
 
 });
+
+let openTabs = [];
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    openTabs[tabId] = { url: tab.url, openedOn: new Date()};
+ //   console.log(openTabs[tabId]);
+});
+chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
+    console.log("closed tab url: " + openTabs[tabId].url + " " + openTabs[tabId].openedOn);
+    let timeElapsed = new Date() - openTabs[tabId].openedOn;
+    timeElapsed /=1000;
+
+    console.log(timeElapsed + " s");
+    
+});
+
+//favIconUrl
