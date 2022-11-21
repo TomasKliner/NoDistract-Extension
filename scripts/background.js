@@ -149,7 +149,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solve tabs update
     if (request.loaded) {
         //console.log(request.name);
-        if (request.name.toLowerCase().includes('free')) { //feed/sub exclude from this, or include only /watch urls
+        if (request.name.toLowerCase().includes('timmysdaadsads'.toLowerCase())) { //feed/sub exclude from this, or include only /watch urls
             console.log("Channel name and record does MATCH!");
             chrome.tabs
                 .query({ currentWindow: true, active: true })
