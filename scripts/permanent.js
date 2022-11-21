@@ -1,5 +1,6 @@
+loadPermanent();
 
-export function loadData(id, data) {
+function loadData(id, data) {
     let x = document.getElementById(id);
     x.value = "";
     for (let i = 0; i < data.length; ++i) {
@@ -7,10 +8,29 @@ export function loadData(id, data) {
     }
 }
 
-export function getData(id) {
+function getData(id) {
     let x = document.getElementById(id).value;
     return x.split(/\r?\n/).filter(element => element);
 }
+
+
+
+function loadPermanent() {
+    chrome.storage.local.get('permanent', function (result) {
+        loadData("permanent_key", result['permanent']['keys']);
+        loadData("permanent_url", result['permanent']['urls']);
+    });
+}
+document.getElementById('save_permanent').addEventListener("click",
+    function savePermanent() {
+        let k = getData("permanent_key");
+        let u = getData("permanent_url");
+        chrome.storage.local.set({ 'permanent': { 'keys': k, 'urls': u } });
+    });
+////////////////////////////////////////////////////////////////
+
+
+
 
 
 
