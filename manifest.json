@@ -22,7 +22,7 @@
 
   "host_permissions": ["http://*/*", "https://*/*", "<all_urls>" ],
 
-  "options_page": "pages/settings.html",
+  "options_page": "pages/settings_home.html",
 
   "content_scripts": [
     {
