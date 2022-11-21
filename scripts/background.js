@@ -17,7 +17,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 
                 for (let i = 0; i < arr.length; ++i) {
-                    if (surl.includes(arr[i])) {
+                    if (surl.toLowerCase().includes(arr[i].toLowerCase())) {
                         chrome.storage.local.get(['redirectUrl'], function (result) {
                             if (result.redirectUrl)
                                 chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -31,7 +31,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                 let arr2 = result['global']['urls'] ? result['global']['urls'] : [];
 
                 for (let i = 0; i < arr2.length; ++i) {
-                    if (surl == arr2[i]) {
+                    if (surl.toLowerCase() == arr2[i].toLowerCase()) {
                         chrome.storage.local.get(['redirectUrl'], function (result) {
                             if (result.redirectUrl)
                                 chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -54,7 +54,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             let surl = changeInfo['url'];
 
             for (let i = 0; i < arr.length; ++i) {
-                if (surl.includes(arr[i])) {
+                if (surl.toLowerCase().includes(arr[i].toLowerCase())) {
                     chrome.storage.local.get(['redirectUrl'], function (result) {
                         if (result.redirectUrl)
                             chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -67,7 +67,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             let arr2 = result['permanent']['urls'] ? result['permanent']['urls'] : [];
 
             for (let i = 0; i < arr2.length; ++i) {
-                if (surl == arr2[i]) {
+                if (surl.text.toLowerCase() === arr2[i].toLowerCase()) {
                     chrome.storage.local.get(['redirectUrl'], function (result) {
                         if (result.redirectUrl)
                             chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -106,7 +106,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                     let surl = changeInfo['url'];
 
                     for (let i = 0; i < arr.length; ++i) {
-                        if (surl.includes(arr[i])) {
+                        if (surl.toLowerCase().includes(arr[i].toLowerCase())) {
                             chrome.storage.local.get(['redirectUrl'], function (result) {
                                 if (result.redirectUrl)
                                     chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -123,7 +123,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                     let surl = changeInfo['url'];
 
                     for (let i = 0; i < arr.length; ++i) {
-                        if (surl == arr[i]) {
+                        if (surl.toLowerCase() == arr[i].toLowerCase()) {
                             chrome.storage.local.get(['redirectUrl'], function (result) {
                                 if (result.redirectUrl)
                                     chrome.tabs.update(tabId, { url: result.redirectUrl });
@@ -149,7 +149,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solve tabs update
     if (request.loaded) {
         //console.log(request.name);
-        if (request.name.includes('free')) { //feed/sub exclude from this, or include only /watch urls
+        if (request.name.toLowerCase().includes('free')) { //feed/sub exclude from this, or include only /watch urls
             console.log("Channel name and record does MATCH!");
             chrome.tabs
                 .query({ currentWindow: true, active: true })
