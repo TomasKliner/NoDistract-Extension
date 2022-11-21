@@ -42,29 +42,29 @@
         </ul>
     </nav>
 
-    <div class="text-black w-full text-center overflow-y-scroll min-h-screen">
+    <div class="text-black w-full text-center overflow-y-scroll h-screen">
         <h2 class="text-2xl">Scheduled Time for pages:</h2>
-        <div class="flex flex-col">
-            <label>
-                <h3>Blocking time:</h3>
-                <input type="time" id="timeFrom" class="border rounded">
-                <input type="time" id="timeTo" class="border rounded">
-            </label>
-            in future more time blocks for subscribed people ?!
-            <label>
+        <label>
+            <h3>Blocking time:</h3>
+            <input type="time" id="timeFrom" class="border rounded">
+            <input type="time" id="timeTo" class="border rounded">
+        </label>
+        in future more time blocks for subscribed people ?!
+        <div class="flex justify-around h-3/4 w-full">
+            <label class="w-full">
                 <h3>Keywords:</h3>
-                <textarea id="permanent_key" class="textarea textarea-bordered  w-2/3 resize-y h-1/2"
+                <textarea id="global_key" class="p-2.5 w-3/4 h-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="keywords separated by New Line"></textarea>
             </label>
-            <label>
+            <label class="w-full">
                 <h3>Urls</h3>
-                <textarea id="permanent_url" class="textarea textarea-bordered  w-2/3 resize-y h-4/6"
+                <textarea id="global_url" class="p-2.5 w-3/4 h-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="urls separated by New Line"></textarea>
             </label>
-            <button id="save_permanent" class="btn w-64 m-auto mt-4">save</button>
         </div>
+        <button id="save_global" class="relative btn w-64 m-auto mt-4 rouned border-2 border-black top-6">save</button>
     </div>
 
 </body>
-
+<script src="../scripts/settings.js"></script>
 </html>

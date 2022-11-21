@@ -146,9 +146,10 @@ let openTabs = [];
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
-    if (openTabs[tabId] === undefined) {
+    if (openTabs[tabId] === undefined || openTabs[tabId].url !== changeInfo.url) {
         openTabs[tabId] = { url: tab.url, openedOn: new Date() };
     }
+
 
 });
 chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
