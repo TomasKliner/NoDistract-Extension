@@ -18,7 +18,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
                 for (let i = 0; i < arr.length; ++i) {
                     if (surl.includes(arr[i])) {
-                        chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                        chrome.storage.local.get(['redirectUrl'], function (result) {
+                            if (result.redirectUrl)
+                                chrome.tabs.update(tabId, { url: result.redirectUrl });
+                            else
+                                chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                        });
                     }
                 }
 
@@ -27,8 +32,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
                 for (let i = 0; i < arr2.length; ++i) {
                     if (surl == arr2[i]) {
-
-                        chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                        chrome.storage.local.get(['redirectUrl'], function (result) {
+                            if (result.redirectUrl)
+                                chrome.tabs.update(tabId, { url: result.redirectUrl });
+                            else
+                                chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                        });
                     }
                 }
 
@@ -46,7 +55,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
             for (let i = 0; i < arr.length; ++i) {
                 if (surl.includes(arr[i])) {
-                    chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                    chrome.storage.local.get(['redirectUrl'], function (result) {
+                        if (result.redirectUrl)
+                            chrome.tabs.update(tabId, { url: result.redirectUrl });
+                        else
+                            chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                    });
                 }
             }
 
@@ -54,8 +68,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
             for (let i = 0; i < arr2.length; ++i) {
                 if (surl == arr2[i]) {
-                    console.log(surl);
-                    chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                    chrome.storage.local.get(['redirectUrl'], function (result) {
+                        if (result.redirectUrl)
+                            chrome.tabs.update(tabId, { url: result.redirectUrl });
+                        else
+                            chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                    });
                 }
             }
         });
@@ -89,7 +107,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
                     for (let i = 0; i < arr.length; ++i) {
                         if (surl.includes(arr[i])) {
-                            chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                            chrome.storage.local.get(['redirectUrl'], function (result) {
+                                if (result.redirectUrl)
+                                    chrome.tabs.update(tabId, { url: result.redirectUrl });
+                                else
+                                    chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                            });
                         }
                     }
                 });
@@ -101,8 +124,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
                     for (let i = 0; i < arr.length; ++i) {
                         if (surl == arr[i]) {
-                            console.log(surl);
-                            chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                            chrome.storage.local.get(['redirectUrl'], function (result) {
+                                if (result.redirectUrl)
+                                    chrome.tabs.update(tabId, { url: result.redirectUrl });
+                                else
+                                    chrome.tabs.update(tabId, { url: "https://www.google.com" });
+                            });
                         }
                     }
                 });
@@ -126,7 +153,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { //solv
             console.log("Channel name and record does MATCH!");
             chrome.tabs
                 .query({ currentWindow: true, active: true })
-                .then(x => chrome.tabs.update(x[0].id, { url: "https://www.google.com" }));
+                .then(x => {
+                    chrome.storage.local.get(['redirectUrl'], function (result) {
+                        if (result.redirectUrl)
+                            chrome.tabs.update(x[0].id, { url: result.redirectUrl });
+                        else
+                            chrome.tabs.update(x[0].id, { url: "https://www.google.com" });
+                    });
+                });
         }
         else console.log("Channel name and record does DOESNT match !!");
 
