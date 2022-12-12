@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "plasmo": "^0.59.3",
+    "tailwindcss": "^3.2.4"
+  },
+  "name": "nodistraction",
+  "version": "1.0.0",
+  "description": "extension for adhd",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomasKliner/NoDistract-Extension.git"
+  },
+  "keywords": [
+    "blocking",
+    "page",
+    "blocking",
+    "time",
+    "limit",
+    "adhd",
+    "productivity",
+    "blocker",
+    "concentration"
+  ],
+  "author": "Tomas Kliner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomasKliner/NoDistract-Extension/issues"
+  },
+  "homepage": "https://github.com/TomasKliner/NoDistract-Extension#readme"
+}
