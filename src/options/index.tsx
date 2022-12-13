@@ -14,7 +14,7 @@ export default function options() {
   React.useEffect(() => {
     let loadData = async () => {
       let value = await storage.get("redirectUrl")
-      console.log(value);
+      console.log(value)
       setRedirectUrl(value)
     }
     loadData()
@@ -22,19 +22,18 @@ export default function options() {
 
   React.useEffect(() => {
     let asyncWork = async () => {
-        console.log("saved");
+      console.log("saved")
       await storage.set("redirectUrl", redirectUrl)
     }
     redirectUrl !== undefined && asyncWork()
   }, [redirectUrl])
 
-  function handleUrl(event){
+  function handleUrl(event) {
     setRedirectUrl(event.target.value)
   }
   return (
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
-
       <div className="text-black w-full text-center overflow-y-scroll min-h-screen">
         <h1 className="text-2xl">Main settings</h1>
         <label className="flex justify-center">
