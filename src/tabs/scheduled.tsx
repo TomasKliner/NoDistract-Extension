@@ -8,7 +8,7 @@ import Sidebar from "../components/sidebar"
 
 const storage = new Storage()
 
-export default function Global() {
+export default function Scheduled() {
   return (
     <div className="flex justify-between h-screen w-screen">
         <Sidebar/>

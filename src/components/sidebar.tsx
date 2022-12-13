@@ -2,19 +2,19 @@ export default function Sidebar(){
     return(
          <nav className="flex flex-col justify-between h-full bg-cyan-400 p-4">
             <ul className="flex flex-col justify-start">
-                <a href="settings_home.html">
+                <a href="../options.html">
                     <li>Default Settings</li>
                 </a>
-                <a href="permanent.html">
+                <a href="/tabs/permanent.html">
                     <li>Permanent</li>
                 </a>
-                <a href="global.html">
+                <a href="/tabs/scheduled.html">
                     <li>Scheduled</li>
                 </a>
-                <a href="custom.html">
+                <a href="/tabs/custom.html">
                     <li>Custom Time</li>
                 </a>
-                <a href="limits.html">
+                <a href="/tabs/limits.html">
                     <li>Time limits</li>
                 </a>
             </ul>
