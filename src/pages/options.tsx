@@ -1,7 +1,5 @@
-import { Main } from "~components/main"
 
-function IndexPage() {
-  return <Main name="App" />
+export default function options() {
+  return (<h1>working</h1>)
 }
 
-export default IndexPage
