@@ -2,6 +2,8 @@ import React, { useEffect } from "react"
 
 import { Storage } from "@plasmohq/storage"
 
+import { useStorage } from "@plasmohq/storage/hook"
+
 import "../../style.css"
 
 import Sidebar from "../components/sidebar"
@@ -9,6 +11,53 @@ import Sidebar from "../components/sidebar"
 const storage = new Storage()
 
 export default function Global() {
+ 
+  const [keywords, setKeywords] = useStorage("permanent_keywords",
+  (x) =>{
+    typeof x === "undefined" ? "" : x;
+  }
+)
+  function handleKeywords(event) {
+    setKeywords(event.target.value)
+  }
+  const [urls, setUrls] = React.useState("")
+  function handleUrls(event) {
+    setUrls(event.target.value)
+  }
+  // with NL separators
+  function arrayToString(arr) {
+    let string = "";
+    for (let i = 0; i < arr.length; ++i) {
+      string += arr[i] + '\n';
+    }
+    return string;
+  }
+  React.useEffect(() => {
+    let loadPermanent = async () => {
+      let keywords = await storage.get("permanent_keywords")
+      for (let i = 0; i < keywords.length; ++i) {
+        setKeywords((old) => keywords[i] + "\n")
+      }
+
+      setKeywords(keywords)
+      setUrls(await storage.get("permanent_Urls"))
+
+      //loadadta toto
+    }
+    loadPermanent()
+  }, [])
+
+  // function array to text with new lines (id, data) {
+  //   for (let i = 0; i < data.length; ++i) {
+  //     x.value += data[i] + "\n"
+  //   }
+  // }
+
+  // function getData(id) {
+  //   let x = document.getElementById(id).value
+  //   return x.split(/\r?\n/).filter((element) => element)
+  // }
+
   return (
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
@@ -37,7 +86,6 @@ export default function Global() {
           save
         </button>
       </div>
-      <script src="../scripts/permanent.js"></script>
     </div>
   )
 }
