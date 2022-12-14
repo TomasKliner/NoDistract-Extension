@@ -13,7 +13,7 @@ export default function Limits() {
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
       <div className="text-black w-full text-center overflow-y-scroll min-h-screen">
-        <h2 className="text-2xl">Time limits</h2>
+      <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">Time Limits</h1>
         <div id="arr" className="flex flex-col">
           <div className="flex justify-center">
             <h2 className="w-1/2">Website (keyword based)</h2>

@@ -11,9 +11,9 @@ const storage = new Storage()
 export default function Scheduled() {
   return (
     <div className="flex justify-between h-screen w-screen">
-        <Sidebar/>
+      <Sidebar />
       <div className="text-black w-full text-center overflow-y-scroll h-screen">
-        <h2 className="text-2xl">Scheduled Time for pages:</h2>
+        <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">Scheduled blocks</h1>
         <label>
           <h3>Blocking time:</h3>
           <input type="time" id="timeFrom" className="border rounded"></input>

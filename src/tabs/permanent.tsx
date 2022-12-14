@@ -63,7 +63,7 @@ export default function Global() {
       <Sidebar />
 
       <div className="text-black w-full text-center overflow-y-scroll h-screen">
-        <h2 className="text-2xl">Permanent Block</h2>
+        <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">Permanent Block</h1>
         <div className="flex justify-around w-full h-3/4">
           <label className="w-full">
             <h3>Keywords:</h3>

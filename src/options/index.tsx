@@ -35,7 +35,7 @@ export default function options() {
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
       <div className="text-black w-full text-center overflow-y-scroll min-h-screen">
-        <h1 className="text-2xl">Main settings</h1>
+      <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">Default Settings</h1>
         <label className="flex justify-center">
           <h3>page you get reddirected to:</h3>
           <input
