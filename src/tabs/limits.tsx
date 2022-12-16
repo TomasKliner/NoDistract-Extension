@@ -13,15 +13,27 @@ export default function Limits() {
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
       <div className="text-black w-full text-center overflow-y-scroll min-h-screen">
-      <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">Time Limits</h1>
+        <h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">
+          Time Limits
+        </h1>
         <div id="arr" className="flex flex-col">
           <div className="flex justify-center">
-            <h2 className="w-1/2">Website (keyword based)</h2>
-            <h2 className="w-48">Time in minutes</h2>
+            <h2 className="w-1/2 text-blue-700">Website (keyword based)</h2>
+            <h2 className="w-48 text-cyan-500">Minutes</h2>
           </div>
-          <div className="flex justify-center">
-            <input type="text" className="input input-bordered w-1/2"></input>
-            <input className="input input-bordered w-48" type="number"></input>
+          <div className="">
+            <div className="flex justify-center w-full mb-1">
+              <input
+                type="text"
+                className="border-2 border-blue-500 rounded-l w-1/2 shadow p-1"></input>
+              <input
+                type="number"
+                className="border-2 border-cyan-500 w-16 shadow p-1"></input>
+              <span className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer">x</span>
+            </div>
+            <button id="save" className="button m-auto font-medium px-4 rounded-full shadow-md shadow-cyan-500">
+              Add
+            </button>
           </div>
         </div>
       </div>

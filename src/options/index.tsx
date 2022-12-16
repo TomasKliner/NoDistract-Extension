@@ -5,11 +5,14 @@ import { Storage } from "@plasmohq/storage"
 import "../../style.css"
 
 import Sidebar from "../components/sidebar"
+import { setDefaultResultOrder } from "dns"
 
 const storage = new Storage()
 
 export default function options() {
   const [redirectUrl, setRedirectUrl] = React.useState(undefined)
+  const [difficulty, setDifficulty] = React.useState(5);
+  const [repetition, setRepetition] = React.useState(5);
 
   React.useEffect(() => {
     let loadData = async () => {
@@ -31,6 +34,12 @@ export default function options() {
   function handleUrl(event) {
     setRedirectUrl(event.target.value)
   }
+  function handleRepetition(event) {
+    setRepetition(event.target.value)
+  }
+  function handleDifficulty(event) {
+    setDifficulty(event.target.value)
+  }
   return (
     <div className="flex justify-between h-screen w-screen">
       <Sidebar />
@@ -39,8 +48,8 @@ export default function options() {
           Default Settings
         </h1>
         <label className="flex justify-center mb-2">
-          <h2>What happens on blocking of website (test):</h2>
-          <select className="border-2 border-black rounded p-2" name="cars" id="cars">
+          <h2>What happens on blocked website: </h2>
+          <select className="border-2 border-black rounded p-2 bg-white" name="cars" id="cars">
             <option value="redirect">Redirect to Url</option>
             <option value="last">last page</option>
             <option value="default">Default page</option>
@@ -59,8 +68,8 @@ export default function options() {
             value={redirectUrl}
             onChange={handleUrl}></input>
         </label>
-        <div className="border-2 border-blue-500 border-dashed p-4 m-4">
-          <h2 className="text-2xl text-blue-700 font-bold mb-4">
+        <div className="border-2 border-blue-500 border-dashed p-4 m-4 relative rounded">
+          <h2 className="text-2xl text-blue-700 font-bold mb-4 absolute -top-4 bg-white px-4">
             Annoyence seting:
           </h2>
           <label className="flex justify-center">
@@ -69,6 +78,7 @@ export default function options() {
               min="0"
               max="10"
               type="range"
+              onChange={handleRepetition}
               className=" border-2 border-black"
             />
           </label>
@@ -78,14 +88,15 @@ export default function options() {
               min="0"
               max="10"
               type="range"
-              className="border-2 border-black"
+              onChange={handleRepetition}
+              className="border-4 border-black"
             />
           </label>
         </div>
 
         <button
           id="save"
-          className="block bg-blue-500 text-white rounded shadow p-2 my-2 border-2 border-white m-auto">
+          className="button m-auto font-medium">
           SAVE // does nothing
         </button>
       </div>

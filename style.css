@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 button{
-    @apply p-1 m-1 text-black bg-white rounded-sm font-medium;
+    @apply block bg-blue-500 text-white rounded shadow p-2 my-2 border-2 border-white;
 }
 
 .h{
