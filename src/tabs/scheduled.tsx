@@ -38,27 +38,17 @@ export default function Scheduled() {
           Scheduled blocks
         </h1>
         <label>
-          <h3>Blocking time:</h3>
-          <div className="flex justify-around">
-            <div className="flex flex-col w-40 text-black border-4 border-blue-500 rounded-md text-xl font-medium">
-              <figure className="bg-gradient-to-tr from-blue-500 to-cyan-500 text-white py-2">
-                Monday
-              </figure>
-              <input type="time" className="border rounded"></input>
-              <input type="time" className="border rounded"></input>
-            </div>
-
-            <div className="flex flex-col w-40 text-black border-4 border-blue-500 rounded-md text-xl font-medium">
-              <figure className="bg-gradient-to-tr from-blue-500 to-cyan-500 text-white py-2">
-                Tuesday
-              </figure>
-              <input type="time" className="border rounded"></input>
-              <input type="time" className="border rounded"></input>
-            </div>
+          <div className="flex justify-around w-5/6 m-auto">
+            <TimeRange name="Monday"/>
+            <TimeRange name="Tuesday"/>
+            <TimeRange name="Wednesday"/>
+            <TimeRange name="Thursday"/>
+            <TimeRange name="Friday"/>
+            <TimeRange name="Saturday"/>
+            <TimeRange name="Sunday"/>
           </div>
         </label>
-        in future more time blocks for subscribed people ?!
-        <div className="flex justify-around h-3/4 w-full">
+        <div className="flex justify-around h-3/5 w-full mt-8">
           <label className="w-full">
             <h3>Keywords:</h3>
             <textarea
@@ -69,7 +59,7 @@ export default function Scheduled() {
               placeholder="keywords separated by New Line"></textarea>
           </label>
           <label className="w-full">
-            <h3>Urls</h3>
+            <h3>Urls:</h3>
             <textarea
               id="global_url"
               value={urls}
@@ -80,11 +70,23 @@ export default function Scheduled() {
         </div>
         <button
           id="save_global"
-          className="relative btn w-64 m-auto mt-4 rouned border-2 border-black top-6"
+          className="btn mt-12 m-auto w-32"
           onClick={save}>
           Save
         </button>
       </div>
+    </div>
+  )
+}
+
+function TimeRange(props) {
+  return (
+    <div className="flex flex-col w-40 text-black border-4 border-blue-500 rounded-md text-xl font-medium">
+      <figure className="bg-gradient-to-tr from-blue-500 to-cyan-500 text-white py-2">
+        {props.name}
+      </figure>
+      <input type="time" className="border rounded"></input>
+      <input type="time" className="border rounded"></input>
     </div>
   )
 }

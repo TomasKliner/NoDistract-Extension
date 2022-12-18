@@ -13,13 +13,13 @@ button{
 }
 
 h1{
-    @apply h text-2xl;
+    @apply h text-4xl;
 }
 h2{
-    @apply h text-xl;
+    @apply h text-3xl;
 }
 h3{
-    @apply h text-lg;
+    @apply h text-2xl;
 }
 
 nav li{
