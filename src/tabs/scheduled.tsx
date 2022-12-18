@@ -79,6 +79,7 @@ export default function Scheduled() {
   )
 }
 // TODO solve save 
+// now temp solution
 function TimeRange(props) {
   const [from, , storageFrom] = useStorage("scheduled_" + props.name + "_from")
   const [to, , storageTo] = useStorage("scheduled_" + props.name + "_to")
@@ -93,13 +94,15 @@ function TimeRange(props) {
         value={from}
         onChange={(e) => {
           storageFrom.setRenderValue(e.target.value)
+          storageFrom.setStoreValue() //* just for now 
         }}
         className="border rounded"></input>
       <input
         type="time"
         value={to}
         onChange={(e) => {
-          storageFrom.setRenderValue(e.target.value)
+          storageTo.setRenderValue(e.target.value)
+          storageTo.setStoreValue() //* just for now
         }}
         className="border rounded"></input>
     </div>
