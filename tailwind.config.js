@@ -1,9 +1,14 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
-  content: ["./**/*.{html,js}"],
+  mode: "jit",
+  darkMode: "class",
+  content: ["./**/*.{ts,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+      serif: ["Georgia", "serif"]
+    }
   },
+  variants: { extend: { typography: ["dark"] } },
+  plugins: [require("@tailwindcss/typography")]
 }
-// startup script -> lepší využít npm script
-//npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch
