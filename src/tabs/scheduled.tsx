@@ -39,13 +39,13 @@ export default function Scheduled() {
         </h1>
         <label>
           <div className="flex justify-around w-5/6 m-auto">
-            <TimeRange name="Monday"/>
-            <TimeRange name="Tuesday"/>
-            <TimeRange name="Wednesday"/>
-            <TimeRange name="Thursday"/>
-            <TimeRange name="Friday"/>
-            <TimeRange name="Saturday"/>
-            <TimeRange name="Sunday"/>
+            <TimeRange name="Monday" />
+            <TimeRange name="Tuesday" />
+            <TimeRange name="Wednesday" />
+            <TimeRange name="Thursday" />
+            <TimeRange name="Friday" />
+            <TimeRange name="Saturday" />
+            <TimeRange name="Sunday" />
           </div>
         </label>
         <div className="flex justify-around h-3/5 w-full mt-8">
@@ -78,15 +78,30 @@ export default function Scheduled() {
     </div>
   )
 }
-
+// TODO solve save 
 function TimeRange(props) {
+  const [from, , storageFrom] = useStorage("scheduled_" + props.name + "_from")
+  const [to, , storageTo] = useStorage("scheduled_" + props.name + "_to")
+
   return (
     <div className="flex flex-col w-40 text-black border-4 border-blue-500 rounded-md text-xl font-medium">
       <figure className="bg-gradient-to-tr from-blue-500 to-cyan-500 text-white py-2">
         {props.name}
       </figure>
-      <input type="time" className="border rounded"></input>
-      <input type="time" className="border rounded"></input>
+      <input
+        type="time"
+        value={from}
+        onChange={(e) => {
+          storageFrom.setRenderValue(e.target.value)
+        }}
+        className="border rounded"></input>
+      <input
+        type="time"
+        value={to}
+        onChange={(e) => {
+          storageFrom.setRenderValue(e.target.value)
+        }}
+        className="border rounded"></input>
     </div>
   )
 }

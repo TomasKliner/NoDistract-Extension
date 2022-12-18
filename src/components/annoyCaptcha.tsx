@@ -10,7 +10,8 @@ export default function Annoycaptcha(props) {
 
   const [prompt, setPrompt] = React.useState("")
   React.useEffect(() => {
-    handlePrompt(5, 7)
+    let rep = 5;
+    handlePrompt(rep, 7)
   }, [])
 
   function handlePrompt(repetition, difficulty) {
@@ -37,7 +38,7 @@ export default function Annoycaptcha(props) {
   //write function to convert string with math expression to solution
 
   return (
-    <div className="fixed z-[9000] h-full w-full bg-black backdrop-blur-xl bg-opacity-70 text-white">
+    <div className={ "fixed " +" z-[9000] h-full w-full bg-black backdrop-blur-xl bg-opacity-70 text-white"}>
       <h1 className="text-xl font-bold text-center bg-red-500 p-4 mb-48">
         To continue you have to complete this captcha!
       </h1>
