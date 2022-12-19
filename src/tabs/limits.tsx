@@ -8,22 +8,28 @@ import "../../style.css"
 import Sidebar from "../components/sidebar"
 
 const storage = new Storage()
-
+// TODO not working figure it ouit
 export default function Limits() {
-	const [limits, , storageLimits] = useStorage("limits", [{website:"test",time: 0}])
-
-	let mappedLimits;
-	if (limits !== undefined && limits !== null) {
-		console.log(limits)
+	// const [limits, , storageLimits] = useStorage("limits", [
+	// 	{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }
+	// ])
+	const [limits, , storageLimits] = useStorage("limits", async (v) =>
+		v === undefined ? [{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }] : v
+	)
+	let mappedLimits
+	useEffect(() => {
 		mappedLimits = limits.map((limit) => {
-			<Website key={limit.website} website={limit.website} number={limit.time} />
+			return <Website key={limit.website} website={limit.website} number={limit.limit} />
 		})
-    console.log(mappedLimits)
-	}
+		console.log(mappedLimits)
+	}, [limits])
 
 	function handleAdd() {
-    storageLimits.setRenderValue([...limits, { website: "", time: 0 }])
-  }
+		storageLimits.setRenderValue((prev) => {
+			prev.push({ website: "place", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined })
+			return prev
+		})
+	}
 
 	return (
 		<div className="flex justify-between h-screen w-screen">
@@ -38,11 +44,15 @@ export default function Limits() {
 						<h2 className="w-48 text-cyan-500">Minutes</h2>
 					</div>
 					<div className="">
-            {mappedLimits}
+						{mappedLimits}
 						<button
 							onClick={handleAdd}
-							className="button m-auto font-medium px-4 rounded-full shadow-md shadow-cyan-500">
+							className="button bg-green-500 m-auto font-medium px-4 rounded-full shadow-md shadow-green-400">
 							Add
+						</button>
+						<button onClick={() => storageLimits.setRenderValue(limits)} 
+						className="button m-auto">
+							Save
 						</button>
 					</div>
 				</div>
