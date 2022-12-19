@@ -10,25 +10,22 @@ import Sidebar from "../components/sidebar"
 const storage = new Storage()
 // TODO not working figure it ouit
 export default function Limits() {
-	// const [limits, , storageLimits] = useStorage("limits", [
-	// 	{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }
-	// ])
-	const [limits, , storageLimits] = useStorage("limits", async (v) =>
-		v === undefined ? [{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }] : v
-	)
+	const [limits, setLimits] = useStorage("limits", [
+		{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }
+	])
+
 	let mappedLimits
 	useEffect(() => {
-		mappedLimits = limits.map((limit) => {
-			return <Website key={limit.website} website={limit.website} number={limit.limit} />
-		})
-		console.log(mappedLimits)
+		if (limits !== undefined){
+			mappedLimits = limits.map((limit) => {
+				return <Website key={limit.date} number={limit.duration} website={limit.website} />
+			})
+			console.log(mappedLimits);
+		}	
 	}, [limits])
 
 	function handleAdd() {
-		storageLimits.setRenderValue((prev) => {
-			prev.push({ website: "place", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined })
-			return prev
-		})
+		setLimits([{ website: "1", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }, { website: "2", limit: 0, duration: 0, date: Date.now()+1, openedFrom: undefined }])
 	}
 
 	return (
@@ -50,8 +47,7 @@ export default function Limits() {
 							className="button bg-green-500 m-auto font-medium px-4 rounded-full shadow-md shadow-green-400">
 							Add
 						</button>
-						<button onClick={() => storageLimits.setRenderValue(limits)} 
-						className="button m-auto">
+						<button onClick={() => console.log("test")} className="button m-auto">
 							Save
 						</button>
 					</div>
