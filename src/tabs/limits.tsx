@@ -19,23 +19,29 @@ export default function Limits() {
 	if (limits !== undefined && limits !== null) {
 		mappedLimits = limits.map((limit, id) => {
 			return (
-				<div key={id} className="flex justify-center w-full mb-1">
-					<input
-						type="text"
-						value={limit.website}
-						onChange={(e) => handleWebsiteChange(e, id)}
-						className="border-2 border-blue-500 rounded-l w-1/2 shadow p-1"></input>
-					<input
-						type="number"
-						value={limit.limit}
-						onChange={(e) => handleLimitChange(e, id)}
-						className="border-2 border-cyan-500 w-16 shadow p-1 text-center"></input>
-					<span
-						className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer"
-						onClick={() => handleRemove(id)}>
-						x
-					</span>
-				</div>
+				<tr key={id} className="">
+					<td>
+						<input
+							type="text"
+							value={limit.website}
+							onChange={(e) => handleWebsiteChange(e, id)}
+							className="border-2 border-blue-500 rounded-xl p-1 w-96 shadow"></input>
+					</td>
+					<td>
+						<input
+							type="number"
+							value={limit.limit}
+							onChange={(e) => handleLimitChange(e, id)}
+							className="border-2 border-cyan-500 p-1 text-center w-16 rounded-xl shadow"></input>
+					</td>
+					<td>
+						<span
+							className="bg-red-500 rounded-full border-2 border-red-700 h-full text-white py-1 px-2 font-black hover:cursor-pointer shadow"
+							onClick={() => handleRemove(id)}>
+							x
+						</span>
+					</td>
+				</tr>
 			)
 		})
 	}
@@ -69,19 +75,25 @@ export default function Limits() {
 				<h1 className="text-2xl w-full bg-gradient-to-tr from-slate-500 to-slate-600 mb-2 text-white p-2">
 					Time Limits
 				</h1>
+				<p className="text-slate-500">Any websites/keywords shorter than 3 characters are not taken into account.</p>
 				<div id="arr" className="flex flex-col">
-					<div className="flex justify-center">
-						<h2 className="w-1/2 text-blue-700">Website (keyword based)</h2>
-						<h2 className="w-48 text-cyan-500">Minutes</h2>
-					</div>
-					<div className="">
+					<table className="m-auto">
+						<tr>
+							<th className=" text-blue-700 text-xl">Website (keyword based)</th>
+							<th className=" text-cyan-500 text-xl">Minutes</th>
+							<th></th>
+						</tr>
 						{mappedLimits}
-						<button
-							onClick={handleAdd}
-							className="button bg-green-500 m-auto font-medium px-4 rounded-full shadow-md shadow-green-400">
-							Add
-						</button>
-					</div>
+						<tr>
+							<td>
+								<button
+									onClick={handleAdd}
+									className="bg-green-500 font-black text-lg rounded-full shadow-md shadow-green-200 px-3 py-1 relative">
+									+ Add
+								</button>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
