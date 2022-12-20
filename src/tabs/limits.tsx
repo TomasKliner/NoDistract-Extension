@@ -57,12 +57,11 @@ export default function Limits() {
 	}
 	function handleAdd() {
 		if (limits === undefined || limits === null)
-			setLimits([{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }])
+			setLimits([{ website: "", limit: 10, duration: 0, date: Date.now(), openedFrom: undefined }])
 		else {
-			setLimits((last) => [...last, { website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }])
+			setLimits((last) => [...last, { website: "", limit: 10, duration: 0, date: Date.now(), openedFrom: undefined }])
 		}
 	}
-	function handleSave() {}
 
 	return (
 		<div className="flex justify-between h-screen w-screen">
@@ -82,9 +81,6 @@ export default function Limits() {
 							onClick={handleAdd}
 							className="button bg-green-500 m-auto font-medium px-4 rounded-full shadow-md shadow-green-400">
 							Add
-						</button>
-						<button onClick={handleSave} className="button m-auto mt-8 w-32">
-							Save
 						</button>
 					</div>
 				</div>
