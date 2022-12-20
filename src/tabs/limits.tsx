@@ -15,18 +15,40 @@ export default function Limits() {
 	])
 
 	let mappedLimits
-	useEffect(() => {
-		if (limits !== undefined){
-			mappedLimits = limits.map((limit) => {
-				return <Website key={limit.date} number={limit.duration} website={limit.website} />
-			})
-			console.log(mappedLimits);
-		}	
-	}, [limits])
 
-	function handleAdd() {
-		setLimits([{ website: "1", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }, { website: "2", limit: 0, duration: 0, date: Date.now()+1, openedFrom: undefined }])
+	if (limits !== undefined && limits !== null) {
+		mappedLimits = limits.map((limit, id) => {
+			return (
+				<div key={id} className="flex justify-center w-full mb-1">
+					<input
+						type="text"
+						value={limit.website}
+						className="border-2 border-blue-500 rounded-l w-1/2 shadow p-1"></input>
+					<input
+						type="number"
+						value={limit.limit}
+						className="border-2 border-cyan-500 w-16 shadow p-1 text-center"></input>
+					<span
+						className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer"
+						onClick={ () => handleRemove(id)}>
+						x
+					</span>
+				</div>
+			)
+		})
 	}
+	//TODO loooped broken
+	function handleRemove(id) {
+		setLimits(limits.filter((item, i) => i !== id));
+	}
+	function handleAdd() {
+		if (limits === undefined || limits === null)
+			setLimits([{ website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }])
+		else {
+			setLimits((last) => [...last, { website: "", limit: 0, duration: 0, date: Date.now(), openedFrom: undefined }])
+		}
+	}
+	function handleSave() {}
 
 	return (
 		<div className="flex justify-between h-screen w-screen">
@@ -47,7 +69,7 @@ export default function Limits() {
 							className="button bg-green-500 m-auto font-medium px-4 rounded-full shadow-md shadow-green-400">
 							Add
 						</button>
-						<button onClick={() => console.log("test")} className="button m-auto">
+						<button onClick={handleSave} className="button m-auto mt-8 w-32">
 							Save
 						</button>
 					</div>
@@ -61,6 +83,8 @@ export function Website(props) {
 	const [duration, setDuration] = React.useState(props.number)
 	const [website, setWebsite] = React.useState(props.website)
 
+	let remove = props.click
+
 	return (
 		<div className="flex justify-center w-full mb-1">
 			<input
@@ -73,7 +97,9 @@ export function Website(props) {
 				value={duration}
 				onChange={(e) => setDuration(e.target.value)}
 				className="border-2 border-cyan-500 w-16 shadow p-1 text-center"></input>
-			<span className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer">
+			<span
+				className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer"
+				onClick={props.click}>
 				x
 			</span>
 		</div>
