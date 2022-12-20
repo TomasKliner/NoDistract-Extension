@@ -23,10 +23,12 @@ export default function Limits() {
 					<input
 						type="text"
 						value={limit.website}
+						onChange={(e) => handleWebsiteChange(e,id)}
 						className="border-2 border-blue-500 rounded-l w-1/2 shadow p-1"></input>
 					<input
 						type="number"
 						value={limit.limit}
+						onChange={(e) => handleLimitChange(e,id)}
 						className="border-2 border-cyan-500 w-16 shadow p-1 text-center"></input>
 					<span
 						className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer"
@@ -38,6 +40,18 @@ export default function Limits() {
 		})
 	}
 	//TODO loooped broken
+	function handleWebsiteChange(e, id){
+		let newLimits = limits
+		newLimits[id].website = e.target.value
+		console.log(e.target.value)
+		setLimits( last => [...newLimits])		
+	}
+	function handleLimitChange(e, id){
+		let newLimits = limits
+			newLimits[id].limit = e.target.value
+			setLimits( last => [...newLimits])		
+	
+}
 	function handleRemove(id) {
 		setLimits(limits.filter((item, i) => i !== id));
 	}
@@ -99,7 +113,7 @@ export function Website(props) {
 				className="border-2 border-cyan-500 w-16 shadow p-1 text-center"></input>
 			<span
 				className="bg-red-500 rounded-r-full border-2 border-red-700 h-full text-white py-1 px-2 font-bold  shadow hover:cursor-pointer"
-				onClick={props.click}>
+				onClick={()=>props.click(props.id)}>
 				x
 			</span>
 		</div>
