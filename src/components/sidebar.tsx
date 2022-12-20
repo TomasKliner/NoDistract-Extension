@@ -12,7 +12,7 @@ export default function Sidebar() {
           <li className="p-4">Scheduled</li>
         </a>
         <a className="bg-black bg-opacity-10 hover:bg-opacity-20 hover:bg-black mb-1"  href="/tabs/custom.html">
-          <li className=" p-4">Custom Time</li>
+          <li className=" p-4">Annoying captcha</li>
         </a>
         <a className="bg-black bg-opacity-10 hover:bg-opacity-20 hover:bg-black mb-1"  href="/tabs/limits.html">
           <li className=" p-4">Time limits</li>
