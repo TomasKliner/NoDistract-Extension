@@ -1,13 +1,24 @@
 import { Storage } from "@plasmohq/storage"
+
 const storage = new Storage()
+// => why doesnt work  NEED TO BE ASYNC STORAGE//https://stackoverflow.com/questions/70704283/how-to-use-localstorage-or-an-alternative-in-manifest-v3
+/*var keys = Object.keys(localStorage);
+keys.forEach(function(key) {
+  var value = localStorage.getItem(key);
+  // do something with the key and value
+});
+chrome.storage.local.set({[key]: value}, function() {
+  // do something after the key and value have been set
+});
+*/
+//maybe mirroring data ? from local to  chrome automaticaly
 
 console.log("Live now; Background script is running !")
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-
 	let pernament_urls, pernament_keywords, scheduled_urls, scheduled_keywords, redirectUrl
 	let loadData = async () => {
 		pernament_urls = await storage.get("pernament_urls")
-        console.log(pernament_urls);
+		console.log(pernament_urls)
 		pernament_keywords = await storage.get("pernament_keywords")
 		scheduled_urls = await storage.get("scheduled_urls")
 		scheduled_keywords = await storage.get("scheduled_keywords")
@@ -15,7 +26,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 		//await permanent()
 	}
 	function permanent() {
-        console.log("pernament_keywords", pernament_keywords + " ,pernament_urls", pernament_urls)
+		console.log("pernament_keywords", pernament_keywords + " ,pernament_urls", pernament_urls)
 		if (pernament_keywords === undefined) return
 		let arr = pernament_keywords
 		let surl = changeInfo["url"]
