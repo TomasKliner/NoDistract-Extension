@@ -2,12 +2,11 @@ import React, { useEffect } from "react"
 
 import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/hook"
-
+const storage = new Storage()
 import "../../style.css"
 
 import Sidebar from "../components/sidebar"
 
-const storage = new Storage()
 
 export default function Scheduled() {
 	const [keys, setKeys] = useStorage("scheduled_keywords", [])
